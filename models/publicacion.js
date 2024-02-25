@@ -1,40 +1,27 @@
-// Importar las dependencias necesarias 
-const { DataTypes, Model } = require('sequelize');
-const sequelize = require('../config/database');
-const Usuario = require('./usuario');
-const Destino = require('./destino');
+'use strict';
+const{
+  Model
+}=require('sequelize');
+module.exports=(sequelize,DataTypes)=>{
+// Definir el modelo Usuario
+class Publicacion extends Model {
 
-// Definir la clase Publicacion
-class Publicacion extends Model {}
-
+static associate(models){
+  Publicacion.belongsTo(models.Usuario, {
+    foreignKey:'idUsuario'
+  });
+  Publicacion.belongsTo(models.Destino, {
+    foreignKey:'idDestino'
+  });
+}
+}
 Publicacion.init({
-  // Definir los campos del modelo Publicacion
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  contenido: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  ubicacion: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  fechaHora: {
-    type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: DataTypes.NOW,
-  },
+  contenido: DataTypes.TEXT,
+  ubicacion:DataTypes.STRING,
+  fecha:DataTypes.DATE
 }, {
   sequelize,
   modelName: 'Publicacion',
 });
-
-// Definir las relaciones con otras clases
-Publicacion.belongsTo(Usuario, { as: 'autor' });
-Publicacion.belongsTo(Destino, { as: 'destino' });
-
-// Exportar la clase Publicacion
-module.exports = Publicacion;
+return Publicacion;
+};

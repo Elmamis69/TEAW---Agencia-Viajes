@@ -1,33 +1,26 @@
-// Importar las dependencias necesarias 
-const { DataTypes, Model } = require('sequelize');
-const sequelize = require('../config/database');
+'use strict';
+const{
+  Model
+}=require('sequelize');
+module.exports=(sequelize,DataTypes)=>{
+// Definir el modelo Usuario
+class Destino extends Model {
 
-// Definir la clase Destino
-class Destino extends Model {}
-
+static associate(models){
+  Destino.hasMany(models.Publicacion, {
+    foreignKey:'idPublicacion'
+  });
+  Destino.hasMany(models.resenaLugar, {
+    foreignKey:'idResenaLugar'
+  });
+}
+}
 Destino.init({
-  // Definir los campos del modelo Destino
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  nombre: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  descripcion: {
-    type: DataTypes.TEXT,
-    allowNull: true,
-  },
-  fotos: {
-    type: DataTypes.JSON,
-    allowNull: true,
-  },
+  nombreDestino: DataTypes.STRING,
+  descripcion: DataTypes.STRING
 }, {
   sequelize,
   modelName: 'Destino',
 });
-
-// Exportar la clase Destino
-module.exports = Destino;
+return Destino;
+};
