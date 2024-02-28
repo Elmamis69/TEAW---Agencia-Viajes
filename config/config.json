@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "",
+    "password": "ja160418",
     "database": "ConexionViajera",
     "host": "127.0.0.1",
     "dialect": "mysql"

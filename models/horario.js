@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      horario.belongsTo(models.itinerario,{foreignKey:"iditinerario"})
     }
   }
   horario.init({

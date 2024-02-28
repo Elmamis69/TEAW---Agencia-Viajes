@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       idItinerario: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER, allowNull:false,references:{model:"itinerarios",key:"id"}
       },
       horarioActividad: {
         type: Sequelize.STRING

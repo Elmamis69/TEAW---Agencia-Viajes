@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Publicacion.belongsTo(models.Usuario,{foreignKey:"idUsuario"})
       Publicacion.belongsTo(models.Destino,{foreignKey:"idDestino"})
+      Publicacion.hasMany(models.comentarioPublicacion,{foreignKey:"idPublicacion"})
+      Publicacion.hasMany(models.reaccionPublicacion,{foreignKey:"idPublicacion"})
     }
   }
   Publicacion.init({

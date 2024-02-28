@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       idResena: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER, allowNull:false,references:{model:"ResenaLugars",key:"id"}
       },
       Foto: {
         type: Sequelize.STRING
