@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       idItinerario: {
-        type: Sequelize.INTEGER, allowNull:false,references:{model:"itinerarios",key:"id"}
+        type: Sequelize.INTEGER
       },
       Comentario: {
         type: Sequelize.STRING

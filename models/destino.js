@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Destino.hasMany(models.Publicacion,{foreignKey:"idDestino"})
-      Destino.hasMany(models.fotosDestino,{foreignKey:"idDestino"})
     }
   }
   Destino.init({
